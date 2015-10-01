@@ -3,12 +3,13 @@
 <launch>
   <!--Provide option to set namespace from outside-->
   <arg name="namespace" default="/robotis_op"/>
-  <arg name="calib_url" default="$(find robotis_op_camera)/camegggra_info/camera.yaml"/>
+  <arg name="calib_url" default="$(find robotis_op_camera)/camera_info/camera.yaml"/>
 
   <group ns="$(arg namespace)">
 
 
     <node name="robotis_op_camera" pkg="robotis_op_camera" type="robotis_op_camera_node" respawn="false" output="screen" >
+<remap from="/robotis_op/image" to="/robotis_op/camera/image_raw" />
     </node>
   </group>
    
